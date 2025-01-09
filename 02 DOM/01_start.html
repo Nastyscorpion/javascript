@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <style>
+      .groen {
+        color: green;
+      }
+    </style>
   </head>
   <body>
     <h1>Welkom</h1>
@@ -29,8 +35,11 @@
 
     <script>
       "use strict";
-      let alleElementenMetClass = document.querySelectorAll(".vet");
-      console.log(alleElementenMetClass); //nodeList
+      let children = document.body.children;
+      console.log(children);
+      for (let i = 0; i < children.length; i++) {
+        console.log(children[i]);
+      }
     </script>
   </body>
 </html>
