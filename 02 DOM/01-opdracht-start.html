@@ -32,9 +32,25 @@
 
     <script type="text/javascript">
       "use strict";
-      let h1 = document.getElementByTagName(h1);
-      console.log(h1.innerText.toUpperCase());
-      for(let h1=0; i)
+      let h1 = document.getElementsByTagName("h1");
+      let lengte = h1.length;
+      for (let i = 0; i < h1.length; i++) {
+        console.log(h1[i].innerText.toUpperCase());
+      }
+
+      document.title = "Opdracht van Enis";
+
+      let links = document.getElementsByTagName("a");
+      lengte = links.length;
+      for (let i = 0; i < links.length; i++) {
+        links[i].setAttribute("target", "_blank");
+        links[i].style.border = "1px solid red";
+        links[i].style.padding = "5px";
+
+        let parent = links[i].parentNode;
+        let textNode = document.createTextNode("Link: ");
+        parent.insertBefore(textNode, links[i]);
+      }
     </script>
   </body>
 </html>
