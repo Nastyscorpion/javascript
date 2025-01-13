@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enis_arraysOverlopen.html</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      //1
+      let designVakken = ["HTML&CSS", "Photoshop", "Interface", "Drupal"];
+      console.log(designVakken);
+
+      //2
+      let ontwikkelingVakken = ["Workflows", "Javascript", "jQuery", "PHP"];
+      console.log(ontwikkelingVakken);
+
+      //3
+      let alleVakken = designVakken.concat(ontwikkelingVakken);
+      console.log(alleVakken);
+
+      //4
+      let puurProgrammeren = alleVakken.slice(5, 8);
+      console.log(puurProgrammeren);
+
+      //5
+      let afdelingVakken = alleVakken.map(function (vak) {
+        return "FeDev - " + vak;
+      });
+      console.log(afdelingVakken);
+
+      //6
+      ontwikkelingVakken.splice(4, 0, "JS-OOP", "PHP-OOP");
+      console.log(ontwikkelingVakken);
+
+      //7
+      alleVakken.push("JS-OOP", "PHP-OOP");
+      console.log(alleVakken);
+
+      //8
+      alleVakken.unshift("Illustrator");
+      console.log(alleVakken);
+
+      //9
+      alleVakken.shift("Illustrator");
+      console.log(alleVakken);
+
+      //10
+      function aantalVakken(totaal, maanden) {
+        return totaal + 1;
+      }
+
+      let totaalAantalVakken = alleVakken.reduce(aantalVakken, 0);
+      console.log(totaalAantalVakken);
+
+      //11
+      let punten = [87, 93, 75, 81, 74, 85, 92, 91, 67, 65];
+      console.log(punten);
+
+      //12
+      let vakkenEnPunten = alleVakken.reduce(function (totaal, vak, index) {
+        return totaal + (totaal ? " - " : "") + vak + " " + punten[index];
+      }, "");
+
+      console.log(vakkenEnPunten);
+    </script>
+  </body>
+</html>

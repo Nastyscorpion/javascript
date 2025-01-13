@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enis_doetBoodschappen.html</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      //1
+      let boodschappen = [];
+
+      //2
+      boodschappen.push(["bruin boerenbrood", 2, "besteld"]);
+      boodschappen.push(["bio halfvolle melk", 1, "besteld"]);
+      boodschappen.push(["plat water", 6, "besteld"]);
+
+      //3
+      boodschappen[0][2] = "geleverd";
+      boodschappen[1][2] = "nabesteld";
+      boodschappen[2][2] = "geleverd";
+
+      console.log(boodschappen);
+
+      //4
+      let inhoud = ["400g", "1l", "1,5l"];
+
+      //5
+      boodschappen.forEach((boodschap, index) => {
+        boodschap.splice(2, 0, inhoud[index]);
+        console.log(
+          `${boodschap[0]} - aantal: ${boodschap[1]} - inhoud: ${boodschap[2]} - status: ${boodschap[3]}`
+        );
+      });
+    </script>
+  </body>
+</html>

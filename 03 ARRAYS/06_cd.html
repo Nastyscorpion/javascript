@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let cdCollectie = [
+        [
+          "The Black Album",
+          "Metallica",
+          "Enter Sandman",
+          "Sad But True",
+          "Holier Than Thou",
+          "The Unforgiven",
+          "Wherever I May Roam",
+          "Dont Tread On Me",
+          "Through The Never",
+          "Nothing Else Matters",
+          "Of Wolf And Man",
+          "The God That Failed",
+          "My Friend Of Misery",
+          "The Struggle Within",
+        ],
+        [
+          "Homework",
+          "Daft Punk",
+          "Daftendirekt",
+          "WDPK 83.7 FM",
+          "Revolution 909",
+          "Da Funk",
+          "Phœnix",
+          "Fresh",
+          "Around the World",
+          "Rollin' & Scratchin'",
+          "Teachers",
+          "High Fidelity",
+          "Rock'n Roll",
+          "Oh Yeah",
+          "Burnin'",
+          "Indo Silver Club",
+          "Alive",
+          "Funk Ad",
+        ],
+        [
+          "The Dark Side of the Moon",
+          "Pink Floyd",
+          "Speak to Me",
+          "Breathe",
+          "On the Run",
+          "Time",
+          "The Great Gig in the Sky",
+          "Money",
+          "Us and Them",
+          "Any Colour You Like",
+          "Brain Damage",
+          "Eclipse",
+        ],
+      ];
+      function telNummers(totaal, album) {
+        return totaal.length - 2 + album.length - 2;
+        //eerste 2 items zijn albumtitel en uitvoerder
+        //dus die moeten we aftrekken van de lengte
+      }
+      let totaalAantalNummers = cdCollectie.reduce(telNummers, 0);
+      console.log(`totaalAantalNummers: ${totaalAantalNummers}`);
+
+      function getAparteNummers(alleNummers, album) {
+        return alleNummers.concat(album.slice(2, album.length));
+      }
+      //nieuwe array maken voor al de nummers, dus een lege array doorgeven als initialValue
+      let alleAparteNummers = cdCollectie.reduce(getAparteNummers, []);
+      console.log(alleAparteNummers);
+    </script>
+  </body>
+</html>
