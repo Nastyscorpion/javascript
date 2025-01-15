@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image gallery</title>
+    <link rel="stylesheet" type="text/css" href="gallery.css" />
+  </head>
+
+  <body>
+    <p><img id="largeImg" src="550x400/ipad.jpg" alt="Large image" /></p>
+    <div id="thumbs">
+      <a href="550x400/ipad.jpg" title="ipad"><img src="200x150/ipad.jpg" /></a>
+    </div>
+    <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  let largeImg = document.getElementById("largeImg");
+                  let bestandsnamen = [
+                    "ipad.jpg",
+                    "dj.jpg",
+                    "ubuntu.jpg",
+                    "electronica.jpg",
+                  ];
+                  let teller = 1;
+
+                  document
+      .getElementById("nextButton")
+      .addEventListener("click", function() {
+        teller++;
+
+        if (teller >= bestandsnamen.length) {
+          teller = 0;
+        }
+
+        let nieuweLink = document.createElement("a");
+        let nieuweImg = document.createElement("img");
+
+        nieuweImg.src = bestandsnamen[teller];
+        nieuweLink.appendChild(nieuweImg);
+        document.body.appendChild(nieuweLink);
+
+        largeImg.src = nieuweImg.src;
+      });
+    </script>
+  </body>
+</html>
