@@ -11,40 +11,42 @@
       <a href="550x400/ipad.jpg" title="ipad"><img src="200x150/ipad.jpg" /></a>
     </div>
 
+
     <script>
+		"use strict"
       // DOMContentLoaded event
-      document.addEventListener("DOMContentLoaded", function () {
-        let largeImg = document.getElementById("largeImg");
+	  document.addEventListener("DOMContentLoaded", function() {
+	 // Variabelen
+    let largeImg = document.getElementById("largeImg");
+    let bestandsnamen = ["ipad.jpg", "dj.jpg", "ubuntu.jpg", "electronica.jpg"];
+    let teller = 1;
 
-        let bestandsnamen = [
-          "550x400/ipad.jpg",
-          "550x400/dj.jpg",
-          "550x400/ubuntu.jpg",
-          "550x400/electronica.jpg",
-        ];
+	// Button aanmaak
+	const addImageBtn = document.createElement("button");
+    addImageBtn.id = "addImageBtn";
+    addImageBtn.textContent = "Voeg afbeelding toe";
+    document.body.insertBefore(addImageBtn, thumbsDiv);
 
-        let teller = 1;
-
-        let nextButton = document.createElement("button");
-        nextButton.id = "nextButton";
-        nextButton.textContent = "Add Image";
-        document.body.appendChild(nextButton);
-
-        nextButton.addEventListener("click", function () {
-          teller++;
-          if (teller >= bestandsnamen.length) {
+	//Functie: Volgende Afbeelding
+    function volgendeAfbeelding() {
+        largeImg.src = bestandsnamen[teller];
+        teller++;
+        if (teller >= bestandsnamen.length) {
             teller = 1;
-          }
+        }
+    }
 
-          largeImg.src = bestandsnamen[teller];
+	//Bestandsnaam zonder extensie (-4 laatste letters)
+	const a = document.createElement("a");
+            a.href = 550x400/${item};
+            a.title = item.slice(0, -4);
 
-          let nieuweLink = document.createElement("a");
-          let nieuweImg = document.createElement("img");
-          nieuweImg.src = bestandsnamen[teller];
-          nieuweLink.appendChild(nieuweImg);
-          document.getElementById("thumbs").appendChild(nieuweLink);
-        });
-      });
-    </script>
+            const img = document.createElement("img");
+            img.src = 200x150/${item};
+            img.alt = item.slice(0, -4);
+
+    largeImg.addEventListener("click", volgendeAfbeelding);
+});
+
   </body>
 </html>
