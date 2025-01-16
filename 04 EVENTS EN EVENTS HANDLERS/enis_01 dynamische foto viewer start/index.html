@@ -11,42 +11,61 @@
       <a href="550x400/ipad.jpg" title="ipad"><img src="200x150/ipad.jpg" /></a>
     </div>
 
-
     <script>
-		"use strict"
-      // DOMContentLoaded event
-	  document.addEventListener("DOMContentLoaded", function() {
-	 // Variabelen
-    let largeImg = document.getElementById("largeImg");
-    let bestandsnamen = ["ipad.jpg", "dj.jpg", "ubuntu.jpg", "electronica.jpg"];
-    let teller = 1;
+      "use strict";
+      // DOMContentLoaded.
+      document.addEventListener("DOMContentLoaded", function () {
+        // Variabelen
+        let largeImg = document.getElementById("largeImg");
+        let thumbnails = document.getElementById("thumbs");
+        let bestandsnamen = [
+          "ipad.jpg",
+          "dj.jpg",
+          "ubuntu.jpg",
+          "electronica.jpg",
+        ];
+        // Teller die niet bij 0 begint.
+        let teller = 1;
 
-	// Button aanmaak
-	const addImageBtn = document.createElement("button");
-    addImageBtn.id = "addImageBtn";
-    addImageBtn.textContent = "Voeg afbeelding toe";
-    document.body.insertBefore(addImageBtn, thumbsDiv);
+        // Buttonknop als variabele definiëren.
+        let buttonAanmaken = document.createElement("button");
+        buttonAanmaken.id = "buttonAanmaken";
+        buttonAanmaken.textContent = "Voeg afbeelding toe";
 
-	//Functie: Volgende Afbeelding
-    function volgendeAfbeelding() {
-        largeImg.src = bestandsnamen[teller];
-        teller++;
-        if (teller >= bestandsnamen.length) {
-            teller = 1;
-        }
-    }
+        // Voeg Buttonknop toe en wees aan als child van Thumbnails.
+        thumbnails.appendChild(buttonAanmaken);
 
-	//Bestandsnaam zonder extensie (-4 laatste letters)
-	const a = document.createElement("a");
-            a.href = 550x400/${item};
+        // Nieuwe afbeelding toevoegen wanneer men klikt.
+        buttonAanmaken.addEventListener("click", function () {
+          if (teller < bestandsnamen.length) {
+            let item = bestandsnamen[teller];
+            let a = document.createElement("a");
+            a.href = `550x400/${item}`;
+            // Bestandsnamen zonder extensie.
             a.title = item.slice(0, -4);
 
-            const img = document.createElement("img");
-            img.src = 200x150/${item};
+            let img = document.createElement("img");
+            img.src = `200x150/${item}`;
+            // Bestandsnamen zonder extensie.
             img.alt = item.slice(0, -4);
 
-    largeImg.addEventListener("click", volgendeAfbeelding);
-});
+            a.appendChild(img);
+            thumbnails.insertBefore(a, buttonAanmaken);
+            // Verhoog teller met 1.
+            teller++;
+          } else {
+            alert("Geen afbeeldingen meer beschikbaar!");
+          }
+        });
 
+        // Grote afbeelding wordt aangepast wanneer men op de kleine afb klikt.
+        thumbnails.addEventListener("click", function (e) {
+          if (e.target.tagName === "IMG") {
+            largeImg.src = e.target.parentElement.href;
+            e.preventDefault();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
