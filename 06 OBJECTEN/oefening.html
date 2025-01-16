@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMDB Object</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      let my_IMDB = {
+        titel: "X-men",
+        lengte: 104,
+        jaar: 2000,
+        sterren: 7.4,
+        printIt() {
+          document.write(
+            `${this.titel}<br>
+             ${this.lengte} <br>
+             ${this.jaar}<br>
+             ${this.sterren}`
+          );
+        },
+      };
+
+      my_IMDB.printIt();
+    </script>
+  </body>
+</html>

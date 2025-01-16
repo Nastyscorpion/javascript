@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+      }
+
+      #hex {
+        color: white;
+        font: 64px/64px Verdana;
+        height: 64px;
+        /*Vertical center*/
+        position: relative;
+        top: 50%;
+        margin-top: -32px;
+        /*Horizontal center*/
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hex"></div>
+    <label>Dag: <input id="dag" size="2" /></label>
+    <label>Maand: <input id="maand" size="2" /></label>
+    <label>Jaartal: <input id="jaartal" size="2" /></label>
+    <input type="button" id="myBtn" value="Toon de kleur van je geboorte" />
+
+    <script>
+      "use strict";
+      // DOMLOADED.
+      window.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("myBtn")
+          .addEventListener("click", displayGeboortekleur);
+      });
+
+      // OBJECT GEBOORTEKLEUR - PROPERTIES & METHOD.
+      let geboortekleur = {
+        dag: "",
+        maand: "",
+        jaartal: "",
+        toonKleur() {
+          let kleur = `#${this.dag}${this.maand}${this.jaartal}`;
+          document.body.style.backgroundColor = kleur;
+          document.getElementById(
+            "hex"
+          ).textContent = `De geboortekleur is: ${kleur}`;
+        },
+      };
+
+      // WAARDES VAN DAG-MAAND-JAARVELDEN.
+      function displayGeboortekleur() {
+        geboortekleur.dag = document.getElementById("dag").value;
+        geboortekleur.maand = document.getElementById("maand").value;
+        geboortekleur.jaartal = document.getElementById("jaartal").value;
+
+        // CHECK 1 DIGIT.
+        if (geboortekleur.dag.length === 1) {
+          geboortekleur.dag = "0" + geboortekleur.dag;
+        }
+        if (geboortekleur.maand.length === 1) {
+          geboortekleur.maand = "0" + geboortekleur.maand;
+        }
+
+        // ROEP TOONKLEUR FUNCTIE OP
+        geboortekleur.toonKleur();
+      }
+    </script>
+  </body>
+</html>
