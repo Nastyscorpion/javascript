@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      function Fruit(naam, kleur, zoetheid, origine) {
+        this.fruitNaam = naam;
+        this.fruitKleur = kleur;
+        this.fruitZoetheid = zoetheid;
+        this.fruitOrigine = origine;
+      }
+
+      this.toonGegevens = function () {
+        document.write(
+          `Naam: ${this.fruitNaam}, Kleur: ${this.fruitKleur}, Zoetheid: ${this.fruitZoetheid}, Origine: ${this.fruitOrigine}`
+        );
+      };
+
+      let banaan = new Fruit("banaan", "geel", "gemiddeld", "Afrika");
+      banaan.toonGegevens();
+    </script>
+  </body>
+</html>

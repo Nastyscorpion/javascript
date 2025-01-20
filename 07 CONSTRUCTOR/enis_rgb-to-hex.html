@@ -1,0 +1,54 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opdracht: RGB naar Hex converteren (***)</title>
+  </head>
+  <body>
+    <form id="myForm">
+      R: <input type="text" id="kleurRIn" maxlength="3" size="3" /> G:
+      <input type="text" id="kleurGIn" maxlength="3" size="3" /> B:
+      <input type="text" id="kleurBIn" maxlength="3" size="3" />
+      <input type="button" id="bereken" value="Bereken de kleur" />
+      <input type="text" id="hexWaardeOut" />
+    </form>
+
+    <script>
+      "use strict";
+
+      // DOMCONTENTLOADED.
+      window.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("bereken")
+          .addEventListener("click", berekenKleur);
+      });
+
+      // OBJECT CONSTRUCTOR KLEURHEX(3 KLEUREN + HEXSTRING METHOD).
+      function KleurHex(rood, groen, blauw) {
+        this.rood = rood;
+        this.groen = groen;
+        this.blauw = blauw;
+      // HEXSTRING METHOD().
+        this.hexString = function() {
+          return `#${(this.rood)}${(this.groen)}${(this.blauw)}`;
+        };
+
+      // FUNCTIE BEREKENKLEUR().
+      function berekenKleur() {
+        let rood = document.getElementById("kleurRIn").value;
+        let groen = document.getElementById("kleurGIn").value;
+        let blauw = document.getElementById("kleurBIn").value;
+
+      // MAAK NIEUWE KLEURHEX-OBJECT AAN; NAAM = MIJNKLEURHEX.
+        let mijnKleurHex = new KleurHex(rood, groen, blauw);
+
+      // TOON DE HEX-WAARDE.
+        document.getElementById("hexWaardeOut").value =
+          mijnKleurHex.hexString();
+      }
+    </script>
+  </body>
+</html>
+```
