@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,25 +29,37 @@
         this.rood = rood;
         this.groen = groen;
         this.blauw = blauw;
-      // HEXSTRING METHOD().
-        this.hexString = function() {
-          return `#${(this.rood)}${(this.groen)}${(this.blauw)}`;
+
+        this.hexString = function () {
+          let roodHex = hexadecimaalTransformeren(this.rood);
+          let groenHex = hexadecimaalTransformeren(this.groen);
+          let blauwHex = hexadecimaalTransformeren(this.blauw);
+          // RETURN ALS STRING
+          return `#${roodHex}${groenHex}${blauwHex}`;
         };
+      }
+
+      // FUNCTIE HEXADECIMAAL TRANSFORMEREN() EN 1-DIGIT-CONTROLE.
+      function hexadecimaalTransformeren(kleurCode) {
+        // ROND AF NAAR BENEDEN + TOSTRING FUNCTIE(16) + HOOFDLETTERS
+        let hex = Math.floor(kleurCode).toString(16).toUpperCase();
+        return hex.length === 1 ? "0" + hex : hex;
+      }
 
       // FUNCTIE BEREKENKLEUR().
       function berekenKleur() {
-        let rood = document.getElementById("kleurRIn").value;
-        let groen = document.getElementById("kleurGIn").value;
-        let blauw = document.getElementById("kleurBIn").value;
+        let rood = parseInt(document.getElementById("kleurRIn").value) || 0;
+        let groen = parseInt(document.getElementById("kleurGIn").value) || 0;
+        let blauw = parseInt(document.getElementById("kleurBIn").value) || 0;
 
-      // MAAK NIEUWE KLEURHEX-OBJECT AAN; NAAM = MIJNKLEURHEX.
+        // MAAK NIEUWE KLEURHEX-OBJECT AAN; NAAM = MIJNKLEURHEX.
         let mijnKleurHex = new KleurHex(rood, groen, blauw);
 
-      // TOON DE HEX-WAARDE.
+        // TOON DE HEX-WAARDE.
         document.getElementById("hexWaardeOut").value =
           mijnKleurHex.hexString();
+        document.body.style.backgroundColor = mijnKleurHex.hexString();
       }
     </script>
   </body>
 </html>
-```
