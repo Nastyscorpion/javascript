@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oefening initials</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      function Person(voornaam, achternaam) {
+        this.voornaam = voornaam;
+        this.achternaam = achternaam;
+      }
+
+      Person.prototype.getInitials = function () {
+        return `${this.voornaam.charAt(0)}${this.achternaam.charAt(0)}`;
+      };
+
+      let muzikant = new Person("Jim", "Jones");
+      document.write(muzikant.getInitials());
+    </script>
+  </body>
+</html>
