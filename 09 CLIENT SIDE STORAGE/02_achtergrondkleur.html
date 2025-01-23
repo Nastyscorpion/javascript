@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #cccccc;
+      }
+    </style>
+  </head>
+  <body>
+    <p><input id="achtergrondkleur" /></p>
+    <p><button id="change">Verander</button></p>
+    <p><button id="reset">Reset</button></p>
+
+    <script>
+      "use strict";
+
+      window.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("change")
+          .addEventListener("click", veranderKleur);
+      });
+
+      window.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("reset").addEventListener("click", resetKleur);
+      });
+
+      let docBody = document.body;
+      let achtergrondkleurInput = document.getElementById("achtergrondkleur");
+
+      //controle of er al een localStorage bestaat, zo ja, die gebruiken
+      if (localStorage.achtergrondkleur) {
+        docBody.style.backgroundColor = localStorage.achtergrondkleur;
+      }
+
+      //anders de localstorage aanmaken en invullen
+      else {
+        localStorage.achtergrondkleur = "#cccccc";
+      }
+
+      //de input invullen met de waarde uit de localStorage
+      achtergrondkleurInput.value = localStorage.achtergrondkleur;
+
+      // de change knop
+      function veranderKleur() {
+        localStorage.achtergrondkleur = achtergrondkleurInput.value;
+        docBody.style.backgroundColor = achtergrondkleurInput.value;
+      }
+
+      //de reset knop
+      function resetKleur() {
+        localStorage.achtergrondkleur = "#CCCCCC";
+        docBody.style.backgroundColor = "#CCCCCC";
+        achtergrondkleurInput.value = "#CCCCCC";
+      }
+    </script>
+  </body>
+</html>
