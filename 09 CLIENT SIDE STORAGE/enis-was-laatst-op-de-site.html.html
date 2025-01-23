@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enis-was-laatst-op-de-site.html</title>
+  </head>
+  <body>
+    <div id="weergave"></div>
+
+    <button id="btnVerwijderMij">Verwijder mij</button>
+
+    <script>
+      "use strict";
+
+       window.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem("laatstOpDeSite")) {
+        let laatstOpDeSite = localStorage.getItem("laatstOpDeSite");
+        }
+
+        else {
+        document.getElementById("weergave").innerHTML = `<p>Dit is de eerste keer dat je op deze site komt.</p>`;
+        }
+      };
+    </script>
+  </body>
+</html>
