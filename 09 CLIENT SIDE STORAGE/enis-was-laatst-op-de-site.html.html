@@ -13,15 +13,34 @@
     <script>
       "use strict";
 
-       window.addEventListener("DOMContentLoaded", function () {
-        if (localStorage.getItem("laatstOpDeSite")) {
-        let laatstOpDeSite = localStorage.getItem("laatstOpDeSite");
+      // DOMCONTENTLOADED-GDEELTE
+      window.addEventListener("DOMContentLoaded", function () {
+        let weergave = document.getElementById("weergave");
+        let vandaag = new Date();
+        let btnVerwijderMij = document.getElementById("btnVerwijderMij");
+
+        // IF-STRUCUUR ALS JE AL EERDER OP DE SITE WAS.
+        if (localStorage.getItem("laatsteKeerOpDeSite")) {
+          let laatsteKeerOpDeSite = localStorage.getItem("laatsteKeerOpDeSite");
+          weergave.innerHTML = `<p>Je was hier de laatste keer op: ${laatsteKeerOpDeSite}</p>`;
         }
 
+        // ELSE = ALS HET JE EERSTE KEER IS.
         else {
-        document.getElementById("weergave").innerHTML = `<p>Dit is de eerste keer dat je op deze site komt.</p>`;
+          weergave.innerHTML = `<p>Dit is de eerste keer dat je op deze site komt.</p>`;
+
+          // LOCALSTORAGE-UPDATE MET HUIDIGE DATUM
+          localStorage.setItem("laatsteKeerOpDeSite", vandaag);
         }
-      };
+
+        // CLICK = VERWIJDER LOCALSTORAGE-ITEM (laatsteKeerOpDeSite).
+        btnVerwijderMij.addEventListener("click", function () {
+          localStorage.removeItem("laatsteKeerOpDeSite");
+
+          // PAGINA-RELOAD.
+          location.reload();
+        });
+      });
     </script>
   </body>
 </html>
